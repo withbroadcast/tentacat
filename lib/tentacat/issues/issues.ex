@@ -18,6 +18,21 @@ defmodule Tentacat.Issues do
   end
 
   @doc """
+  Filter issues assigned to the authenticated user
+
+  ## Example
+
+      Tentacat.Issues.filter %{state: "open"}
+      Tentacat.Issues.filter client, %{state: "open"}
+
+  More info at: https://docs.github.com/en/rest/reference/issues#list-issues-assigned-to-the-authenticated-user
+  """
+  @spec filter(Client.t(), map) :: Tentacat.response()
+  def filter(client \\ %Client{}, filters) do
+    get("issues?#{URI.encode_query("filters")}", client)
+  end
+
+  @doc """
   Filter repository issues
 
   ## Example
