@@ -29,7 +29,7 @@ defmodule Tentacat.Issues do
   """
   @spec filter(Client.t(), map) :: Tentacat.response()
   def filter(client \\ %Client{}, filters) do
-    get("issues?#{URI.encode_query("filters")}", client)
+    get("issues?#{URI.encode_query(filters)}", client)
   end
 
   @doc """
